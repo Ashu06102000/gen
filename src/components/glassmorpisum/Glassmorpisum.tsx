@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { FaArrowLeftLong } from "react-icons/fa6";
 
 function Glassmorphism() {
   const [blur, setBlur] = useState(10);
@@ -6,6 +8,7 @@ function Glassmorphism() {
   const [borderRadius, setBorderRadius] = useState(15);
   const [backgroundColor, setBackgroundColor] = useState("#ffffff");
   const [boxShadow, setBoxShadow] = useState(true);
+  const [copied, setCopied] = useState<boolean>(false);
   const hexToRgb = (hex: string) => {
     const bigint = parseInt(hex.slice(1), 16);
     const r = (bigint >> 16) & 255;
@@ -24,11 +27,26 @@ function Glassmorphism() {
     color: "#000",
   };
 
+  useEffect(() => {
+    if (copied) {
+      setTimeout(() => {
+        setCopied(false);
+      }, 2000);
+    }
+  }, [copied]);
+
   return (
-    <div className="flex flex-col w-full max-w-screen-2xl mx-auto gap-4 justify-center items-center p-4">
-      <h1 className="text-2xl font-bold text-black uppercase">
-        Glassmorphism Generator
-      </h1>
+    <div className="flex flex-col w-full max-w-screen-2xl mx-auto gap-10 justify-center p-4">
+      <div className="flex gap-4 items-center">
+        <Link className="text-black flex items-center gap-2" to="/">
+          <FaArrowLeftLong color="black" /> Back
+        </Link>
+
+        <h1 className="text-2xl text-left font-bold text-black uppercase">
+          Glassmorphism Generator
+        </h1>
+      </div>
+
       <div className="flex justify-between gap-4 w-full">
         <div className="controls flex flex-col gap-4 w-1/4">
           <label className="text-black text-sm font-light uppercase flex flex-col gap-2 p-5 border border-gray-300">
@@ -98,8 +116,20 @@ border-radius: ${borderRadius}px;
 box-shadow: ${boxShadow ? "0px 4px 30px rgba(0, 0, 0, 0.1)" : "none"};
 border: 1px solid rgba(255, 255, 255, 0.18);`}
           </pre>
-          <button className="border border-gray-600 p-4 uppercase text-gray-600 transition-all duration-400 ease-in hover:text-gray-500 hover:border-gray-500">
-            Copy css
+          <button
+            onClick={() => {
+              navigator.clipboard.writeText(
+                `backdrop-filter: blur(${blur}px);
+background: rgba(${hexToRgb(backgroundColor)}, ${transparency});
+border-radius: ${borderRadius}px;
+box-shadow: ${boxShadow ? "0px 4px 30px rgba(0, 0, 0, 0.1)" : "none"};
+border: 1px solid rgba(255, 255, 255, 0.18);`
+              );
+              setCopied(true);
+            }}
+            className="border border-gray-600 p-4 uppercase text-gray-600 transition-all duration-400 ease-in hover:text-gray-500 hover:border-gray-500"
+          >
+            {copied ? "Copied!" : "Copy css"}
           </button>
         </div>
       </div>
