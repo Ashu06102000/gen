@@ -63,7 +63,7 @@ const HexToRgb = () => {
           }}
           className="border mt-4 text-center cursor-pointer border-gray-600 p-4 uppercase text-gray-600 transition-all duration-400 ease-in hover:text-gray-500 hover:border-gray-500"
         >
-          {copied ? "Copied!" : "Copy color code"}
+          {copied ? "Copied!" : "Copy rgb code"}
         </button>
       </div>
     </div>
