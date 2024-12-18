@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Colorpicker from "./components/color_picker/Colorpicker";
 import Glassmorpisum from "./components/glassmorpisum/Glassmorpisum";
 import "./App.css";
+import HexToRgb from "./components/colorConverter/HexToRgb";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/color-picker" element={<Colorpicker />} />
           <Route path="/glassmorphism" element={<Glassmorpisum />} />
+          <Route path="/hex-to-rgb" element={<HexToRgb />} />
         </Routes>
       </div>
     </>
