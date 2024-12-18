@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import BackButton from "../BackButton";
 
 const HexToRgb = () => {
   const [rgb, setRgb] = useState("255, 255, 255");
@@ -40,31 +41,33 @@ const HexToRgb = () => {
     }
   }, [copied]);
   return (
-    <div className="h-full w-full flex justify-center items-center flex-col gap-8">
-      <h2 className="text-black font-semibold text-4xl">HEX TO RGB</h2>
-      <div className="flex flex-col gap-2 justify-center">
-        <input
-          className="border-gray-600 border rounded-sm p-4 text-black w-96"
-          onChange={(e) => hexToRgb(e.target.value)}
-          type="text"
-          name="hextorgb"
-          placeholder="HEX TO RGB"
-          value={hexColor}
-        />
-        {error && <p className="text-red-500">{error}</p>}
-        <div className="flex justify-between">
-          <p className="text-black">Input: {hexColor}</p>
-          <p className="text-black">Output: rgb({rgb})</p>
-        </div>
-        <button
-          onClick={() => {
-            navigator.clipboard.writeText(`rbg(${rgb})`);
-            setCopied(true);
-          }}
-          className="border mt-4 text-center cursor-pointer border-gray-600 p-4 uppercase text-gray-600 transition-all duration-400 ease-in hover:text-gray-500 hover:border-gray-500"
-        >
-          {copied ? "Copied!" : "Copy rgb code"}
-        </button>
+    <div className="flex flex-col w-full max-w-screen-2xl mx-auto gap-10 justify-center p-4">
+      <BackButton text="HEX TO RGB CONVERTER" />
+      <div className="h-full w-full flex justify-center items-center flex-col gap-8">
+        <div className="flex flex-col gap-2 justify-center">
+          <input
+            className="border-gray-600 border rounded-sm p-4 text-black w-96"
+            onChange={(e) => hexToRgb(e.target.value)}
+            type="text"
+            name="hextorgb"
+            placeholder="HEX TO RGB"
+            value={hexColor}
+          />
+          {error && <p className="text-red-500">{error}</p>}
+          <div className="flex justify-between">
+            <p className="text-black">Input: {hexColor}</p>
+            <p className="text-black">Output: rgb({rgb})</p>
+          </div>
+          <button
+            onClick={() => {
+              navigator.clipboard.writeText(`rbg(${rgb})`);
+              setCopied(true);
+            }}
+            className="border mt-4 text-center cursor-pointer border-gray-600 p-4 uppercase text-gray-600 transition-all duration-400 ease-in hover:text-gray-500 hover:border-gray-500"
+          >
+            {copied ? "Copied!" : "Copy rgb code"}
+          </button>
+        </div>{" "}
       </div>
     </div>
   );

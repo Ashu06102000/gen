@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaArrowLeftLong } from "react-icons/fa6";
+import BackButton from "../BackButton";
 
 function Glassmorphism() {
   const [blur, setBlur] = useState(10);
@@ -37,15 +38,7 @@ function Glassmorphism() {
 
   return (
     <div className="flex flex-col w-full max-w-screen-2xl mx-auto gap-10 justify-center p-4">
-      <div className="flex gap-4 items-center">
-        <Link className="text-black flex items-center gap-2" to="/">
-          <FaArrowLeftLong color="black" /> Back
-        </Link>
-
-        <h1 className="text-2xl text-left font-bold text-black uppercase">
-          Glassmorphism Generator
-        </h1>
-      </div>
+      <BackButton text="Glassmorphism Generator" />
 
       <div className="flex justify-between gap-4 w-full">
         <div className="controls flex flex-col gap-4 w-1/4">

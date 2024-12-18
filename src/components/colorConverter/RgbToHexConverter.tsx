@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { FaArrowLeftLong } from "react-icons/fa6";
+import { Link } from "react-router-dom";
+import BackButton from "../BackButton";
 
 const RgbaToHexConverter = () => {
   const [rgba, setRgba] = useState("rgba(255, 255, 255, 1)");
@@ -51,30 +54,32 @@ const RgbaToHexConverter = () => {
   }, [copied]);
 
   return (
-    <div className="h-full w-full flex justify-center items-center flex-col gap-8">
-      <h2 className="text-black font-semibold text-4xl">RGBA TO HEX</h2>
-      <div className="flex flex-col gap-2 justify-center">
-        <input
-          className="border-gray-600 border rounded-sm p-4 text-black w-96"
-          onChange={(e) => rgbaToHex(e.target.value)}
-          type="text"
-          name="rgbatohex"
-          placeholder="RGBA TO HEX (e.g., rgba(255, 255, 255, 1))"
-        />
-        {error && <p className="text-red-500">{error}</p>}
-        <div className="flex justify-between">
-          <p className="text-black">Input: {rgba}</p>
-          <p className="text-black">Output: {hexColor}</p>
+    <div className="flex flex-col w-full max-w-screen-2xl mx-auto gap-10 justify-center p-4">
+      <BackButton text="RGBA TO HEX CONTERTER" />
+      <div className="w-full flex justify-center items-center flex-col gap-8">
+        <div className="flex flex-col gap-2 justify-center">
+          <input
+            className="border-gray-600 border rounded-sm p-4 text-black w-96"
+            onChange={(e) => rgbaToHex(e.target.value)}
+            type="text"
+            name="rgbatohex"
+            placeholder="RGBA TO HEX (e.g., rgba(255, 255, 255, 1))"
+          />
+          {error && <p className="text-red-500">{error}</p>}
+          <div className="flex justify-between">
+            <p className="text-black">Input: {rgba}</p>
+            <p className="text-black">Output: {hexColor}</p>
+          </div>
+          <button
+            onClick={() => {
+              navigator.clipboard.writeText(hexColor);
+              setCopied(true);
+            }}
+            className="border mt-4 text-center cursor-pointer border-gray-600 p-4 uppercase text-gray-600 transition-all duration-400 ease-in hover:text-gray-500 hover:border-gray-500"
+          >
+            {copied ? "Copied!" : "Copy hex code"}
+          </button>
         </div>
-        <button
-          onClick={() => {
-            navigator.clipboard.writeText(hexColor);
-            setCopied(true);
-          }}
-          className="border mt-4 text-center cursor-pointer border-gray-600 p-4 uppercase text-gray-600 transition-all duration-400 ease-in hover:text-gray-500 hover:border-gray-500"
-        >
-          {copied ? "Copied!" : "Copy hex code"}
-        </button>
       </div>
     </div>
   );
