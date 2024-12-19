@@ -6,6 +6,7 @@ import Glassmorpisum from "./components/glassmorpisum/Glassmorpisum";
 import "./App.css";
 import HexToRgb from "./components/colorConverter/HexToRgb";
 import RgbToHexConverter from "./components/colorConverter/RgbToHexConverter";
+import TypographyScaleGenerator from "./components/typography/TypographyScaleGenerator";
 
 function App() {
   return (
@@ -18,6 +19,10 @@ function App() {
           <Route path="/glassmorphism" element={<Glassmorpisum />} />
           <Route path="/hex-to-rgb" element={<HexToRgb />} />
           <Route path="/rgb-to-hex" element={<RgbToHexConverter />} />
+          <Route
+            path="/typography-scale-generator"
+            element={<TypographyScaleGenerator />}
+          />
         </Routes>
       </div>
     </>

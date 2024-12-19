@@ -25,6 +25,11 @@ const Home = () => {
             RGB to Hex
           </div>
         </Link>
+        <Link to={"/typography-scale-generator"}>
+          <div className="border border-gray-600 p-4 uppercase text-gray-600 transition-all duration-400 ease-in hover:text-gray-500 hover:border-gray-500">
+            Typography scale generator
+          </div>
+        </Link>
       </div>
     </div>
   );
