@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { FaArrowLeftLong } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+
 import BackButton from "../BackButton";
 
 const RgbaToHexConverter = () => {
@@ -13,7 +12,7 @@ const RgbaToHexConverter = () => {
     if (!rgba) {
       return setError("");
     }
-
+    setRgba(rgba);
     const formattedRgba = rgba.trim();
     const rgbaRegex =
       /^rgba?\((\d{1,3}),\s?(\d{1,3}),\s?(\d{1,3}),?\s?(0|0?\.\d+|1)?\)$/;
