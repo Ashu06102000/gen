@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import BackButton from "../BackButton";
 
 const ScrollInViewAnimation = () => {
-  // User-controlled values
   const [opacityFrom, setOpacityFrom] = useState(0);
   const [opacityTo, setOpacityTo] = useState(1);
   const [scaleFrom, setScaleFrom] = useState(0.5);
@@ -12,7 +11,6 @@ const ScrollInViewAnimation = () => {
   const [divCount, setDivCount] = useState(10);
   const [copied, setCopied] = useState<boolean>(false);
 
-  // Generate dynamic keyframes based on user input
   const keyframes = `
     @keyframes fadeInAnimation {
       from {
@@ -26,7 +24,6 @@ const ScrollInViewAnimation = () => {
     }
   `;
 
-  // Generate dynamic styles
   const styles = `
     .animate-on-scroll {
       animation: fadeInAnimation linear;
@@ -45,13 +42,10 @@ const ScrollInViewAnimation = () => {
     };
   }, [opacityFrom, opacityTo, scaleFrom, scaleTo, entry, cover]);
 
-  // Function to generate random colors
-
   return (
     <div className="max-w-screen-2xl mx-auto my-4 overflow-scroll">
       <BackButton text="Scroll in View CSS Animation Generator" />
 
-      {/* Controls for animation */}
       <div className="grid grid-cols-3 mt-16 gap-6">
         <div className="p-4 rounded-sm flex flex-col gap-4">
           <h2 className="text-lg uppercase text-black">
@@ -149,7 +143,7 @@ const ScrollInViewAnimation = () => {
         </div>
         <div className="flex flex-col items-center gap-4 my-6 ">
           <div className="flex flex-col gap-3">
-            <h2 className="text-xl text-white font-light">
+            <h2 className="text-xl text-black font-light">
               Scroll to see the animation!
             </h2>
             <div className="flex gap-2">
@@ -191,7 +185,7 @@ const ScrollInViewAnimation = () => {
             onClick={() => {
               navigator.clipboard.writeText(
                 `${keyframes} 
-              ${styles}
+                 ${styles}
               `
               );
               setCopied(true);
@@ -200,6 +194,10 @@ const ScrollInViewAnimation = () => {
           >
             {copied ? "Copied!" : "Copy css"}
           </button>
+          <p className="text-gray-700">
+            NOTE: AFTER COPING ABOVE CSS, JUST ADD ABOVE CLASS TO THE CONTAINER
+            WHICH YOU WANTED TO ANIMATE ON SCROLL.
+          </p>
         </div>
       </div>
     </div>
