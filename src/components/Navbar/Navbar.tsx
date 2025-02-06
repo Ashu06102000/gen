@@ -2,11 +2,9 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <header>
+    <header className="text-2xl p-4 border-b-gray-300 border-b-[0.5px]">
       <Link to="/">
-        <h2 className="text-2xl p-4 border-b-gray-300 border-b-[0.5px] text-black">
-          GEN
-        </h2>
+        <img src="src/assets/Rator-logo.svg" alt="" />
       </Link>
     </header>
   );
