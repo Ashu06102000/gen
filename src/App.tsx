@@ -6,7 +6,8 @@ import "./App.css";
 import HexToRgb from "./components/colorConverter/HexToRgb";
 import RgbToHexConverter from "./components/colorConverter/RgbToHexConverter";
 import TypographyScaleGenerator from "./components/typography/TypographyScaleGenerator";
-import ScrollInViewAnimation from "./components/scrollInViewAnimation/ScrollInViewAnimation";
+import ScrollInViewAnimation from "./components/Animations/ScrollInview/scrollInViewAnimation/ScrollInViewAnimation";
+import ScrollTRiggeredTextRevealGenerator from "./components/Animations/ScrollInview/scrollTriggerTextReveal/ScrollTextRevealGenerator";
 
 function App() {
   return (
@@ -25,6 +26,10 @@ function App() {
           <Route
             path="/scoll-in-view-animation"
             element={<ScrollInViewAnimation />}
+          />
+          <Route
+            path="/scroll-triggered-text-reveal-generator"
+            element={<ScrollTRiggeredTextRevealGenerator />}
           />
         </Routes>
       </div>

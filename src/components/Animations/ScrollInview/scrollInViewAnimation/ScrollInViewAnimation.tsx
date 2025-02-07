@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import BackButton from "../BackButton";
-import ScrollGenetatorControls from "./scrollGenetaorControls";
+import BackButton from "../../../BackButton";
+
 import ScrollGeneratorView from "./ScrollGeneratorView";
+import ScrollGenetatorControls from "./ScrollGenetaorControls";
 
 const ScrollInViewAnimation = () => {
   const [opacityFrom, setOpacityFrom] = useState(0);
